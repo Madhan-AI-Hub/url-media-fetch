@@ -78,9 +78,9 @@ export const useMediaFetch = (): UseMediaFetchReturn => {
 
       // Mock response based on URL content
       let mockData: MediaData;
-      if (url.includes("youtube")) {
+      if (url.toLowerCase().includes("youtube")) {
         mockData = mockMediaData.youtube;
-      } else if (url.includes("instagram")) {
+      } else if (url.toLowerCase().includes("instagram")) {
         mockData = mockMediaData.instagram;
       } else {
         mockData = mockMediaData.default;
