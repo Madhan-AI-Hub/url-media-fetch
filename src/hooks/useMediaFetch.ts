@@ -68,15 +68,12 @@ export const useMediaFetch = (): UseMediaFetchReturn => {
       // Simulate API call delay
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      // Mock URL validation and platform detection
-      const isValidUrl = url.includes("youtube.com") || 
-                        url.includes("instagram.com") || 
-                        url.includes("facebook.com") || 
-                        url.includes("tiktok.com") ||
-                        url.includes("example.com");
+      // Mock URL validation - accept any valid URL format
+      const urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+      const isValidUrl = urlPattern.test(url);
 
       if (!isValidUrl) {
-        throw new Error("Unsupported URL or platform. Please check the link and try again.");
+        throw new Error("Please enter a valid URL (e.g., https://example.com/video)");
       }
 
       // Mock response based on URL content
